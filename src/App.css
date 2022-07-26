@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap');
+
+
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content:center;
+  /* body태그 아래에 있는 요소들을, body태그를 기준으로 가운데에 두게 된다. */
+
+  align-items: center; /* display: flex일 때, 세로축을 기준으로 가운데 두겠다는 의미 */
+  font-family: 'Nanum Pen Script';
+  min-height: 100vh; /* 현재 web screen 의 100퍼센트를 최소 높이로 갖겠다는 의미 */
+  margin: 0px; /* body태그는 기본적으로 마진이 조금 있음, 없애자 */
+}
+
+@media (min-width: 650px){
+  .App {
+    width: 640px; 
+  }
+}
+
+/* 화면의 넓이가 650px 이하!! 일 때! */
+@media (max-width: 650px) {
+  /* 현재 화면에서 90퍼센트 차지하게 하겠다. */
+  .App {
+    width: 90vw; 
+  }
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; /* 그림자 만들기 */
+}
+
+/* 기본적으로 화면의 100퍼센트 높이를 차지함 */
+.App {
+  min-height: 100vh;
+  padding-left: 20px; 
+  padding-right: 20px;
+}
+
+/* MyButton */
+.MyButton {
+  cursor: pointer; 
+  border: none; /* 기존의 버튼 스타일 지우기 */
+  border-radius: 5px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px; 
+
+  font-size: 18px; 
+
+  white-space: nowrap; /* 버튼 안 글자가 잘려서 두 줄이 되는거 방지*/
+  font-family: "Nanum Pen Script";
+}
+
+.MyButton_default {
+  background-color: #ececec;
+  color: black;
+}
+
+.MyButton_positive {
+  background-color: #64c964;
+  color: white;
+}
+
+.MyButton_negative {
+  background-color: #fd565f;
+  color: white;
+}
+
+/* Header */
+
+header {
+  padding-top: 20px; 
+  padding-bottom: 20px; 
+
+  /*  html은 기본적으로 division이 세로인데, header에 flex주면, header의 자식들이 가로로 바뀜 
+      즉 header에 들어올 메뉴바(3개)들이 가로로 줄 지을 수 있도록 해준다는 거 ! 세로로 내려갈 게 아니라! */
+  display: flex; 
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+/* header내부에서, 가로로, 중앙에 */
+header > div {
+  /* 여기도 가로로! */
+  display: flex;
+}
+
+header .head_text {
+  width: 50%; 
+  font-size: 25px;
+  justify-content: center; /* 가로축에서, 중앙정렬..! */
+}
+
+/* left, right */
+header .head_btn_left {
+  width: 25%; 
+  justify-content: start; /* 왼쪽에 붙이기*/
+}
+
+header .head_btn_right {
+  width: 25%; 
+  justify-content: end; /* 오른쪽에 붙이기 */
+}
+
+header button {
+  font-family: "Nanum Pen Script";
+}
+
+/* DiaryList */
+.DiaryList .menu_wrapper {
+  margin-top: 20px; 
+  margin-bottom: 30px; 
+  /* warpper에 flex 를 적용-> 하위 division을 한줄로 바꾸자 */
+  display: flex; 
+  /* 하위 div의 간격이 벌어지게 됨 */
+  justify-content: space-between;
+}
+
+ .DiaryList .menu_wrapper .right_col {
+  /* right_col이, 옆에 남은 영역 전체를 차지하게됨,
+  display:flex부모의 아래에서, 남은! 모든 영역을 차지하고 있게 됨 */
+  flex-grow: 1;
+ }
+ 
+ .DiaryList .menu_wrapper .right_col button {
+  width: 100%; 
+ }
+
+ .DiaryList .ControlMenu {
+  margin-right: 10px;
+  border: none; 
+  border-radius: 5px;/* 둥글게 */
+  background-color: #ececec;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  cursor: pointer;
+  font-family: "Nanum Pen Script";
+  font-size: 18px;
+
+ }
+
+ /* DiaryITem */
+
+.DiaryItem {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  /* 분리해주는 밑에만, 분리선 생성  */
+  border-bottom: 1px solid #e2e2e2;
+
+  /* 3열으로 셋팅  */
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 모든 다이어리 아이템의 img div  */
+.DiaryItem .emotion_img_wrapper {
+  cursor: pointer;
+  /* 그 네모 박스 이미지의 크기를 120*80으로 한거  */
+  min-width: 120px;
+  height: 80px;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* 이미지마다, 배경색을 통일시켜주면 된다..! */
+.DiaryItem .emotion_img_wrapper_1 {
+  background-color: #64c964;
+}
+.DiaryItem .emotion_img_wrapper_2 {
+  background-color: #9dd772;
+}
+.DiaryItem .emotion_img_wrapper_3 {
+  background-color: #fdce17;
+}
+.DiaryItem .emotion_img_wrapper_4 {
+  background-color: #fd8446;
+}
+.DiaryItem .emotion_img_wrapper_5 {
+  background-color: #fd565f;
+}
+
+/* 원래 원형이미지가 조금 줄면서 안튕겨나가도록 해줌 */
+.DiaryItem .emotion_img_wrapper img {
+  width: 50%;
+}
+
+.DiaryItem .info_wrapper {
+  /* 가운데를 쫙 늘려주자 */
+  flex-grow: 1;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.DiaryItem .diary_date {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.DiaryItem .diary_content_preview {
+  font-size: 18px;
+  color: grey;
+}
+
+.DiaryItem .btn_wrapper {
+  /* 화면이 줄어도, 너무 작아지지 않도록 설정하는 거 */
+  min-width: 70px;
+}
+
+/* Diary Editor */
+.DiaryEditor {
+
+}
+
+.DiaryEditor section {
+  /* 각 섹션간의 간격을 40px로 고정 */
+  margin-bottom: 40px;
+}
+
+.DiaryEditor h4 {
+  /* 오늘은 언제인가요? 부분 */
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* 첫번째 섹션 */
+.DiaryEditor .input_date {
+  border: none;
+  border-radius: 5px;
+  background-color: #ececec;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  cursor: pointer;
+  font-family: "Nanum Pen Script";
+  font-size: 20px;
+}
+
+.DiaryEditor .emotion_list_wrapper {
+  /* 그리드를 만드는 속성임. '격자'를 만듬!  */
+  display: grid;
+  /* 5개의 열을 나열할건데, 사이즈르 ㄹ입력해야하는데, auto로 한거  */
+  grid-template-columns: repeat(5, auto);
+  /* 각 item사이의 간격 설정 */
+  gap: 2%;
+}
+
+/* 일기내용부분 */
+.DiaryEditor textarea {
+  font-family: "Nanum Pen Script";
+  font-size: 20px;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  /* 가로로 늘릴수 없도록 설정..! 위아래로만 늘어날 수 있도록함 */
+  resize: vertical;
+
+  border: none;
+  border-radius: 5px;
+  background-color: #ececec;
+/* 안에 작성하느 ㄴ내용이 20px씩 안쪽으로 들어감! */
+  padding: 20px;
+}
+
+.DiaryEditor .control_box {
+  display: flex;
+  /* 양쪽으로 벌어짐 */
+  justify-content: space-between;
+  /* 세로축에서, 중앙으로 맞춰줌 */
+  align-items: center;
+}
+
+
+/* EMOTION ITEM */
+
+.EmotionItem {
+  cursor: pointer;
+
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  display: flex; /* 세로 divistion -> 가로로 */
+  flex-direction: column; /* display flex의 자식요소들이 세로로 유지가됨.. 이모지 + '완전좋음'을 세로로..!*/
+  justify-content: center; /* 컬럼중심, 세로의 중앙점!*/
+  align-items: center; /* ===> 박스에서, 가장 중앙에 item 이 위치됨..!*/
+}
+
+.EmotionItem img {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.EmotionItem span {
+  font-size: 18px;
+}
+
+.EmotionItem_off {
+  background-color: #ececec;
+}
+
+.EmotionItem_on_1 {
+  background-color: #64c964;
+  color: white;
+}
+
+.EmotionItem_on_2 {
+  background-color: #9dd772;
+  color: white;
+}
+.EmotionItem_on_3 {
+  background-color: #fdce17;
+  color: white;
+}
+.EmotionItem_on_4 {
+  background-color: #fd8446;
+  color: white;
+}
+.EmotionItem_on_5 {
+  background-color: #fd565f;
+  color: white;
+}
+
+/* Diary */
+
+.DiaryPage {
+}
+
+.DiaryPage section {
+  /* 아이템들을 중앙으로 맞춰주기 위한 의도..! */
+  width: 100%;
+
+  margin-bottom: 100px;
+
+  /* 모든 아이템들이 중앙으로 맞춰지게 됨*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.DiaryPage h4 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.DiaryPage .diary_img_wrapper {
+  background-color: #ececec;
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+  /* 이미지 + descript div가 세로배치됨 */
+  display: flex;
+  flex-direction: column;
+  /* 중앙에 아이템들이 맞춰짐 */
+  align-items: center;
+  /* 세로축을 중심으로, 적당히 가운데로 여백을 두고 모아지는 속성 */
+  justify-content: space-around;
+}
+
+.DiaryPage .diary_img_wrapper_1 {
+  background-color: #64c964;
+}
+.DiaryPage .diary_img_wrapper_2 {
+  background-color: #9dd772;
+}
+.DiaryPage .diary_img_wrapper_3 {
+  background-color: #fdce17;
+}
+.DiaryPage .diary_img_wrapper_4 {
+  background-color: #fd8446;
+}
+.DiaryPage .diary_img_wrapper_5 {
+  background-color: #fd565f;
+}
+
+.DiaryPage .emotion_descript {
+  font-size: 25px;
+  color: white;
+}
+
+.DiaryPage .diary_content_wrapper {
+  width: 100%;
+  background-color: #ececec;
+  border-radius: 5px;
+
+  /* 줄 바꾸게 되면, 단어를 쪼개서 줄 바꾸지 말라는 속성*/
+  word-break: keep-all;
+  /* 길어지면, 텍스트 끊어서 자동으로 아래로 줄바꿈해주는 명령어 */
+  overflow-wrap: break-word;
+}
+
+.DiaryPage .diary_content_wrapper p {
+  /* 부모요소가 width를 100프로로 가지지 못하면 왼쪽으로 안 붙음..  */
+  padding: 20px;
+  text-align: left;
+
+  font-size: 20px;
+  font-family: "Yeon Sung";
+  font-weight: 400;
+  /* 글자의 높이를 지정하는 속성임. 줄과 줄 사이의 간격 가독성역할..  */
+  line-height: 2.5;
+}
